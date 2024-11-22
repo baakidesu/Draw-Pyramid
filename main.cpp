@@ -10,11 +10,10 @@ int main()
 
     do {
         std::cout << "Which type of pyramid do you want? " << std::endl;
-        std::cout << "1. Top to Down pyramid" << std::endl;
-        std::cout << "2. Bottom to Up pyramid" << std::endl;
+        std::cout << "1. Top to Down half pyramid" << std::endl;
+        std::cout << "2. Bottom to Up half pyramid" << std::endl;
         std::cout << "3. Real pyramid." << std::endl;
-        std::cout << "4. 2D Side-View pyramid." << std::endl;
-        std::cout << "5. I don't want a pryramid." << std::endl;
+        std::cout << "4. I don't want a pryramid." << std::endl;
 
         std::cin >> pyramidType;
 
@@ -28,8 +27,9 @@ int main()
         }
     }while (!typedIndexCorrect);
 
+    int dump = pyramidSize;
     switch (pyramidType) {
-        case 1: //top to down
+        case 1: //top to down half pyramid
             for (int i = pyramidSize; i >= 1; i--) {
                 for (int j = 1; j <= i; j++) {
                     std::cout << ".";
@@ -37,7 +37,7 @@ int main()
                 std::cout << std::endl;
             }
             break;
-        case 2: //bottom to up
+        case 2: //bottom to up half pyramid
             for (int i = 1; i <= pyramidSize; i++) {
                 for (int j = 1; j <= i; j++) {
                     std::cout << ".";
@@ -46,10 +46,21 @@ int main()
             }
             break;
         case 3: // real pyramid
-            break;
-        case 4: //2d side view
-            break;
-        case 5: //nothing
+
+            for(int i=1; i <= pyramidSize; i++) {
+                for(int j=dump; j > 1; j--) {
+                    std::cout << " ";
+                }
+                for (int x = 1; x <= 2*i-1; x++) {
+                    std::cout << "*";
+                }
+                std::cout << std::endl;
+                dump--;
+            }
+        break;
+
+        case 4: //nothing
+            std::cout << "I do nothing. See you!" << std::endl;
             break;
     }
 
